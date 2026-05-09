@@ -21,3 +21,21 @@ export interface UpdateProfileInput {
   avatar?: string | null;
   headline?: string | null;
 }
+
+export interface UpdateThemeInput {
+  bgType?: "solid" | "gradient";
+  bgColor?: string;
+  bgGradientStart?: string;
+  bgGradientEnd?: string;
+  textColor?: string;
+  buttonColor?: string;
+}
+
+export interface ThemeData {
+  bgType: string;
+  bgColor: string;
+  bgGradientStart: string;
+  bgGradientEnd: string;
+  textColor: string;
+  buttonColor: string;
+}

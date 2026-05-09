@@ -9,6 +9,12 @@ export async function findPublicProfileByUsername(username: string) {
       bio: true,
       avatar: true,
       headline: true,
+      bgType: true,
+      bgColor: true,
+      bgGradientStart: true,
+      bgGradientEnd: true,
+      textColor: true,
+      buttonColor: true,
       links: {
         where: { isActive: true },
         orderBy: { position: "asc" },
@@ -18,6 +24,33 @@ export async function findPublicProfileByUsername(username: string) {
           url: true,
           icon: true,
           position: true,
+        },
+      },
+    },
+  });
+}
+
+export async function findPublicLinkByIdAndUsername(id: string, username: string) {
+  return prisma.link.findFirst({
+    where: {
+      id,
+      isActive: true,
+      user: {
+        username,
+      },
+    },
+    select: {
+      id: true,
+      title: true,
+      url: true,
+      icon: true,
+      position: true,
+      createdAt: true,
+      user: {
+        select: {
+          username: true,
+          name: true,
+          avatar: true,
         },
       },
     },

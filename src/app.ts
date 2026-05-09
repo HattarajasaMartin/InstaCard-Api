@@ -6,6 +6,8 @@ import profileRoutes from "./routes/profileRoute";
 import userRoutes from "./routes/userRoute";
 import linkRoute from "./routes/link.route";
 import publicRoute from "./routes/publicRoute";
+import qrRoute from "./routes/qr.route";
+import analyticsRoute from "./routes/analytics.route";
 
 const app = express();
 const allowedOrigin = process.env.FRONTEND_URL || "*";
@@ -29,6 +31,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/profiles", profileRoutes);
 app.use("/api/links", linkRoute);
 app.use("/u", publicRoute);
+app.use("/api/qr", qrRoute);
+app.use("/api/analytics", analyticsRoute);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
